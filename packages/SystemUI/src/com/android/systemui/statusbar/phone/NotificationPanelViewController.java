@@ -297,6 +297,7 @@ public class NotificationPanelViewController extends PanelViewController {
     private KeyguardAffordanceHelper mAffordanceHelper;
     private KeyguardUserSwitcher mKeyguardUserSwitcher;
     private KeyguardStatusBarView mKeyguardStatusBar;
+    private KeyguardClockSwitch keyguardClockSwitch;
     private ViewGroup mBigClockContainer;
     private QS mQs;
     private FrameLayout mQsFrame;
@@ -694,7 +695,7 @@ public class NotificationPanelViewController extends PanelViewController {
         mKeyguardStatusBar = mView.findViewById(R.id.keyguard_header);
         mKeyguardStatusView = mView.findViewById(R.id.keyguard_status_view);
 
-        KeyguardClockSwitch keyguardClockSwitch = mView.findViewById(R.id.keyguard_clock_container);
+        keyguardClockSwitch = mView.findViewById(R.id.keyguard_clock_container);
         mBigClockContainer = mView.findViewById(R.id.big_clock_container);
         keyguardClockSwitch.setBigClockContainer(mBigClockContainer);
 
@@ -844,7 +845,7 @@ public class NotificationPanelViewController extends PanelViewController {
 
         // Re-associate the clock container with the keyguard clock switch.
         mBigClockContainer.removeAllViews();
-        KeyguardClockSwitch keyguardClockSwitch = mView.findViewById(R.id.keyguard_clock_container);
+        keyguardClockSwitch = mView.findViewById(R.id.keyguard_clock_container);
         keyguardClockSwitch.setBigClockContainer(mBigClockContainer);
 
         // Update keyguard bottom area
@@ -2440,6 +2441,7 @@ public class NotificationPanelViewController extends PanelViewController {
                 getExpandedFraction());
         float alpha = Math.min(expansionAlpha, 1 - getQsExpansionFraction());
         mBigClockContainer.setAlpha(alpha);
+        keyguardClockSwitch.setAlpha(alpha);
     }
 
     private void setTopCorners(boolean enable) {
