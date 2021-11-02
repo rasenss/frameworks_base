@@ -1195,8 +1195,7 @@ public class Instrumentation {
         app.attach(context);
         GmsHooks.initApplicationBeforeOnCreate(app);
         AttestationHooks.initApplicationBeforeOnCreate(app);
-        String packageName = app.getPackageName();
-        PixelPropsUtils.setProps(packageName);
+        PixelPropsUtils.setProps(app);
         return app;
     }
     
@@ -1212,12 +1211,11 @@ public class Instrumentation {
     static public Application newApplication(Class<?> clazz, Context context)
             throws InstantiationException, IllegalAccessException, 
             ClassNotFoundException {
-        Application app = (Application)clazz.newInstance();
+         Application app = (Application)clazz.newInstance();
         app.attach(context);
-        GmsHooks.initApplicationBeforeOnCreate(app);
+       GmsHooks.initApplicationBeforeOnCreate(app);
         AttestationHooks.initApplicationBeforeOnCreate(app);
-        String packageName = app.getPackageName();
-        PixelPropsUtils.setProps(packageName);
+        PixelPropsUtils.setProps(app);
         return app;
     }
 
