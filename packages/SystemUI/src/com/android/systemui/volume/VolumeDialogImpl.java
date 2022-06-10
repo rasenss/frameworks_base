@@ -1294,8 +1294,7 @@ public class VolumeDialogImpl implements VolumeDialog,
                 if (av.isActive()) {
                 mAppVolumeActivePackageName = av.getPackageName();
                 return mAppVolumeActivePackageName != null;
-             break;
-                }
+              }
            }
         }
         return ret;
